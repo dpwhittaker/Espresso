@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package>
+   <metadata>
+      <id>LayoutFarm.Espresso</id>
+      <version>1.0.61</version>
+      <authors>win</authors>
+      <owners>win</owners>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>C# &amp;lt;3 v8</description>
+      <releaseNotes>pre-release</releaseNotes>
+      <copyright>MIT</copyright>
+      <tags>.NETCORE V8 C# LayoutFarm Espresso</tags>
+      <dependencies>
+         <dependency id="NETStandard.Library" version="1.6" />
+      </dependencies>
+   </metadata>
+   <files>
+      <file src="bin\Debug\netstandard1.6\EspressoCore.dll" target="lib\netstandard1.6\EspressoCore.dll" />
+      <file src="bin\Debug\netstandard1.6\EspressoCore.pdb" target="lib\netstandard1.6\EspressoCore.pdb" />
+      <file src="..\..\Tests\Debug\libespr.dll" target="runtimes\win7-x64\native\libespr.dll" />
+   </files>
+</package>

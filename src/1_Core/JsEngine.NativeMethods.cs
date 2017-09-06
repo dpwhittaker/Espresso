@@ -94,6 +94,15 @@ namespace Espresso
             }
             return RunJsEngine(nodeStartPars.Count, nodeStartPars.ToArray(), engineSetupCb);
         }
+        public static int RunJsEngine(string[] parameters, string[] nodeParameters, NativeEngineSetupCallback engineSetupCb)
+        {
+            List<string> nodeStartPars = new List<string>();
+            nodeStartPars.Add("node");
+            if (nodeParameters != null) nodeStartPars.AddRange(nodeParameters);
+            nodeStartPars.Add("hello.espr");
+            if (parameters != null) nodeStartPars.AddRange(parameters);
+            return RunJsEngine(nodeStartPars.Count, nodeStartPars.ToArray(), engineSetupCb);
+        }
         //-------------------------------------------------------------------------------------------------------
         [DllImport(JsBridge.LIB_NAME, CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
         static extern int RunJsEngine(int argc, string[] args, NativeEngineSetupCallback engineSetupCb);
