@@ -502,7 +502,11 @@ namespace Espresso
                     JsValue** jsarr = (JsValue**)output.Ptr;
                     for (int i = 0; i < arrLen; i++)
                     {
-                        AnyToJsValuePtr(array[i], jsarr[i]);
+                        //AnyToJsValuePtr(array[i], jsarr[i]);
+                        JsValue entry = new JsValue();
+                        AnyToJsValue(array[i], ref entry);
+                        jsarr[i] = &entry;
+                        _context.KeepAliveAdd(entry);
                     }
                 }
                 return;
@@ -544,7 +548,7 @@ namespace Espresso
             //-----
             Type type = obj.GetType();
             // Check for nullable types (we will cast the value out of the box later). 
-            type = type.ExtGetInnerTypeIfNullableValue();
+            type = type.ExtGetInnerTypeIfNullableValue() ?? type;
             if (type == typeof(Boolean))
             {
                 output->Type = JsValueType.Boolean;
